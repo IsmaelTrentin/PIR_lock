@@ -6,6 +6,7 @@ void set_reg(REG_SELECTOR_T *mode, unsigned int bitId, unsigned int value) {
 }
 
 // LEDS
+
 /*
 LD0 LED0 TMS/CTED1/RA0
 LD1 LED1 TCK/CTED2/RA1
@@ -73,6 +74,7 @@ void led_turn_on_all() {
 }
 
 // SWITCHES
+
 /*
 SW0 SW0 RPF3/RF3
 SW1 SW1 RPF5/PMA8/RF5
@@ -120,6 +122,48 @@ int sw_read(int swId) {
             return PORTBbits.RB10;
         case 7:// read SW6
             return PORTBbits.RB9; // read SW7
+    }
+
+    return -1;
+}
+
+// BUTTONS
+
+/*
+ BTNU RB1
+ BTNL RB0
+ BTNC RF0
+ BTNR RB8
+ BTND RA15
+ */
+
+void btn_init_all() {
+    TRISBbits.TRISB1 = 1; // RB1 (BTNU) configured as input
+    ANSELBbits.ANSB1 = 0; // RB1 (BTNU) disabled analog
+
+    TRISBbits.TRISB0 = 1; // RB1 (BTNL) configured as input
+    ANSELBbits.ANSB0 = 0; // RB1 (BTNL) disabled analog
+
+    TRISFbits.TRISF4 = 1; // RF0 (BTNC) configured as input
+
+    TRISBbits.TRISB8 = 1; // RB8 (BTNR) configured as input
+    ANSELBbits.ANSB8 = 0; // RB8 (BTNR) disabled analog
+
+    TRISAbits.TRISA15 = 1; // RA15 (BTND) configured as input
+}
+
+int btn_read(int btn_id) {
+    switch (btn_id) {
+        case 0:
+            return PORTBbits.RB1;
+        case 1:
+            return PORTBbits.RB0;
+        case 2:
+            return PORTFbits.RF0;
+        case 3:
+            return PORTBbits.RB8;
+        case 4:
+            return PORTAbits.RA15;
     }
 
     return -1;
