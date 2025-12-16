@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=src/timer.c src/gpio.c src/main.c src/interrupts.c src/lcd.c src/uart.c
+SOURCEFILES_QUOTED_IF_SPACED=src/libmc/timer.c src/libmc/gpio.c src/libmc/interrupts.c src/libmc/lcd.c src/libmc/uart.c src/main.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/src/timer.o ${OBJECTDIR}/src/gpio.o ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/interrupts.o ${OBJECTDIR}/src/lcd.o ${OBJECTDIR}/src/uart.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/src/timer.o.d ${OBJECTDIR}/src/gpio.o.d ${OBJECTDIR}/src/main.o.d ${OBJECTDIR}/src/interrupts.o.d ${OBJECTDIR}/src/lcd.o.d ${OBJECTDIR}/src/uart.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/src/libmc/timer.o ${OBJECTDIR}/src/libmc/gpio.o ${OBJECTDIR}/src/libmc/interrupts.o ${OBJECTDIR}/src/libmc/lcd.o ${OBJECTDIR}/src/libmc/uart.o ${OBJECTDIR}/src/main.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/src/libmc/timer.o.d ${OBJECTDIR}/src/libmc/gpio.o.d ${OBJECTDIR}/src/libmc/interrupts.o.d ${OBJECTDIR}/src/libmc/lcd.o.d ${OBJECTDIR}/src/libmc/uart.o.d ${OBJECTDIR}/src/main.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/src/timer.o ${OBJECTDIR}/src/gpio.o ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/interrupts.o ${OBJECTDIR}/src/lcd.o ${OBJECTDIR}/src/uart.o
+OBJECTFILES=${OBJECTDIR}/src/libmc/timer.o ${OBJECTDIR}/src/libmc/gpio.o ${OBJECTDIR}/src/libmc/interrupts.o ${OBJECTDIR}/src/libmc/lcd.o ${OBJECTDIR}/src/libmc/uart.o ${OBJECTDIR}/src/main.o
 
 # Source Files
-SOURCEFILES=src/timer.c src/gpio.c src/main.c src/interrupts.c src/lcd.c src/uart.c
+SOURCEFILES=src/libmc/timer.c src/libmc/gpio.c src/libmc/interrupts.c src/libmc/lcd.c src/libmc/uart.c src/main.c
 
 
 
@@ -101,78 +101,78 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/src/timer.o: src/timer.c  .generated_files/flags/default/5d29802090d2d1cce861d5b4bc14fdd7ff4ec473 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/timer.o.d 
-	@${RM} ${OBJECTDIR}/src/timer.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/src/timer.o.d" -o ${OBJECTDIR}/src/timer.o src/timer.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+${OBJECTDIR}/src/libmc/timer.o: src/libmc/timer.c  .generated_files/flags/default/f7ab65f47ce7241c664e49f7c35e72a55e1bbba .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/src/libmc" 
+	@${RM} ${OBJECTDIR}/src/libmc/timer.o.d 
+	@${RM} ${OBJECTDIR}/src/libmc/timer.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/libmc/timer.o.d" -o ${OBJECTDIR}/src/libmc/timer.o src/libmc/timer.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/src/gpio.o: src/gpio.c  .generated_files/flags/default/17ef5f8b1be52c66ba41502c48a21944e7c325c2 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/gpio.o.d 
-	@${RM} ${OBJECTDIR}/src/gpio.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/src/gpio.o.d" -o ${OBJECTDIR}/src/gpio.o src/gpio.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+${OBJECTDIR}/src/libmc/gpio.o: src/libmc/gpio.c  .generated_files/flags/default/4cba15767386b74147153acaef065df189d78ee2 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/src/libmc" 
+	@${RM} ${OBJECTDIR}/src/libmc/gpio.o.d 
+	@${RM} ${OBJECTDIR}/src/libmc/gpio.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/libmc/gpio.o.d" -o ${OBJECTDIR}/src/libmc/gpio.o src/libmc/gpio.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/src/main.o: src/main.c  .generated_files/flags/default/fde9c8e85fd1d21a92602e52e0eacd8a315f839f .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/src/libmc/interrupts.o: src/libmc/interrupts.c  .generated_files/flags/default/4bef6c78df43bd0fe6f5ef8f324e26e157c66271 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/src/libmc" 
+	@${RM} ${OBJECTDIR}/src/libmc/interrupts.o.d 
+	@${RM} ${OBJECTDIR}/src/libmc/interrupts.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/libmc/interrupts.o.d" -o ${OBJECTDIR}/src/libmc/interrupts.o src/libmc/interrupts.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/src/libmc/lcd.o: src/libmc/lcd.c  .generated_files/flags/default/b838cca378f99b2533a4487ce75bf22ef32d4b94 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/src/libmc" 
+	@${RM} ${OBJECTDIR}/src/libmc/lcd.o.d 
+	@${RM} ${OBJECTDIR}/src/libmc/lcd.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/libmc/lcd.o.d" -o ${OBJECTDIR}/src/libmc/lcd.o src/libmc/lcd.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/src/libmc/uart.o: src/libmc/uart.c  .generated_files/flags/default/b5e53aa5adaff9eed0654098348acd4c2b4e3a69 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/src/libmc" 
+	@${RM} ${OBJECTDIR}/src/libmc/uart.o.d 
+	@${RM} ${OBJECTDIR}/src/libmc/uart.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/libmc/uart.o.d" -o ${OBJECTDIR}/src/libmc/uart.o src/libmc/uart.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/src/main.o: src/main.c  .generated_files/flags/default/d38a2e17375a1a753e966510b51a86e6dddc9b6c .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/src" 
 	@${RM} ${OBJECTDIR}/src/main.o.d 
 	@${RM} ${OBJECTDIR}/src/main.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/src/main.o.d" -o ${OBJECTDIR}/src/main.o src/main.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/src/interrupts.o: src/interrupts.c  .generated_files/flags/default/a96f0bbb1978cf8c158f0067971050c8568e8ba9 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/interrupts.o.d 
-	@${RM} ${OBJECTDIR}/src/interrupts.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/src/interrupts.o.d" -o ${OBJECTDIR}/src/interrupts.o src/interrupts.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/src/lcd.o: src/lcd.c  .generated_files/flags/default/feb60ccb69cb91e0496cb7897f9ebf6c471f476d .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/lcd.o.d 
-	@${RM} ${OBJECTDIR}/src/lcd.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/src/lcd.o.d" -o ${OBJECTDIR}/src/lcd.o src/lcd.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/src/uart.o: src/uart.c  .generated_files/flags/default/ccecd079ec171cd20940c77a5e6ebc7df56819f9 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/uart.o.d 
-	@${RM} ${OBJECTDIR}/src/uart.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/src/uart.o.d" -o ${OBJECTDIR}/src/uart.o src/uart.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/main.o.d" -o ${OBJECTDIR}/src/main.o src/main.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 else
-${OBJECTDIR}/src/timer.o: src/timer.c  .generated_files/flags/default/e68e97c814e87322b081f273d5d5e8e4ab070413 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/timer.o.d 
-	@${RM} ${OBJECTDIR}/src/timer.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/src/timer.o.d" -o ${OBJECTDIR}/src/timer.o src/timer.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+${OBJECTDIR}/src/libmc/timer.o: src/libmc/timer.c  .generated_files/flags/default/b1e2d17a3c25ecb4ce05dac4c954e2163a10c2e3 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/src/libmc" 
+	@${RM} ${OBJECTDIR}/src/libmc/timer.o.d 
+	@${RM} ${OBJECTDIR}/src/libmc/timer.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/libmc/timer.o.d" -o ${OBJECTDIR}/src/libmc/timer.o src/libmc/timer.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/src/gpio.o: src/gpio.c  .generated_files/flags/default/6cd493facff360f03b4cab6b535cd5d11054b450 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/gpio.o.d 
-	@${RM} ${OBJECTDIR}/src/gpio.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/src/gpio.o.d" -o ${OBJECTDIR}/src/gpio.o src/gpio.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+${OBJECTDIR}/src/libmc/gpio.o: src/libmc/gpio.c  .generated_files/flags/default/7253dbf5c478b1a6c2cc618e7e1f07c5cc96ca31 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/src/libmc" 
+	@${RM} ${OBJECTDIR}/src/libmc/gpio.o.d 
+	@${RM} ${OBJECTDIR}/src/libmc/gpio.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/libmc/gpio.o.d" -o ${OBJECTDIR}/src/libmc/gpio.o src/libmc/gpio.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/src/main.o: src/main.c  .generated_files/flags/default/d7b5ff5280d4ce39d8283b6769f899ea8b56ec43 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/src/libmc/interrupts.o: src/libmc/interrupts.c  .generated_files/flags/default/8b5ea1fe08b97cad1c9bcb9f41c51641948ed5ae .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/src/libmc" 
+	@${RM} ${OBJECTDIR}/src/libmc/interrupts.o.d 
+	@${RM} ${OBJECTDIR}/src/libmc/interrupts.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/libmc/interrupts.o.d" -o ${OBJECTDIR}/src/libmc/interrupts.o src/libmc/interrupts.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/src/libmc/lcd.o: src/libmc/lcd.c  .generated_files/flags/default/13df8b4823bf401e27873ccca62334d69d378d5a .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/src/libmc" 
+	@${RM} ${OBJECTDIR}/src/libmc/lcd.o.d 
+	@${RM} ${OBJECTDIR}/src/libmc/lcd.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/libmc/lcd.o.d" -o ${OBJECTDIR}/src/libmc/lcd.o src/libmc/lcd.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/src/libmc/uart.o: src/libmc/uart.c  .generated_files/flags/default/a72501470244ebd141048a834c1eb9c095df35dd .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/src/libmc" 
+	@${RM} ${OBJECTDIR}/src/libmc/uart.o.d 
+	@${RM} ${OBJECTDIR}/src/libmc/uart.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/libmc/uart.o.d" -o ${OBJECTDIR}/src/libmc/uart.o src/libmc/uart.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/src/main.o: src/main.c  .generated_files/flags/default/37b674c85579a1b99c83c71e35eb9d6c6c33413a .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/src" 
 	@${RM} ${OBJECTDIR}/src/main.o.d 
 	@${RM} ${OBJECTDIR}/src/main.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/src/main.o.d" -o ${OBJECTDIR}/src/main.o src/main.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/src/interrupts.o: src/interrupts.c  .generated_files/flags/default/2bc7991f0990cb6b614aeaac930e1a4302f1c8df .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/interrupts.o.d 
-	@${RM} ${OBJECTDIR}/src/interrupts.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/src/interrupts.o.d" -o ${OBJECTDIR}/src/interrupts.o src/interrupts.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/src/lcd.o: src/lcd.c  .generated_files/flags/default/305dc79db7045b7953aac5802d3d34ccd04199b6 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/lcd.o.d 
-	@${RM} ${OBJECTDIR}/src/lcd.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/src/lcd.o.d" -o ${OBJECTDIR}/src/lcd.o src/lcd.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/src/uart.o: src/uart.c  .generated_files/flags/default/2ef12b32732e09dea4a266f9b87849c965317c08 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/uart.o.d 
-	@${RM} ${OBJECTDIR}/src/uart.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/src/uart.o.d" -o ${OBJECTDIR}/src/uart.o src/uart.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/main.o.d" -o ${OBJECTDIR}/src/main.o src/main.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 endif
 
@@ -187,7 +187,7 @@ endif
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 ${DISTDIR}/PIR_lock.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
 	@${MKDIR} ${DISTDIR} 
-	${MP_CC} $(MP_EXTRA_LD_PRE) -g   -mprocessor=$(MP_PROCESSOR_OPTION)  -o ${DISTDIR}/PIR_lock.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)      -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,-D=__DEBUG_D,--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,${DISTDIR}/memoryfile.xml -mdfp="${DFP_DIR}"
+	${MP_CC} $(MP_EXTRA_LD_PRE) -g -mdebugger -D__MPLAB_DEBUGGER_PK3=1 -mprocessor=$(MP_PROCESSOR_OPTION)  -o ${DISTDIR}/PIR_lock.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)   -mreserve=data@0x0:0x1FC -mreserve=boot@0x1FC02000:0x1FC02FEF -mreserve=boot@0x1FC02000:0x1FC0275F  -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,-D=__DEBUG_D,--defsym=__MPLAB_DEBUGGER_PK3=1,--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,${DISTDIR}/memoryfile.xml -mdfp="${DFP_DIR}"
 	
 else
 ${DISTDIR}/PIR_lock.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   

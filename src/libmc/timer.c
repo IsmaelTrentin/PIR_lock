@@ -1,5 +1,5 @@
 #include <p32xxxx.h>
-#include "interrupts.h"
+#include "libmc/interrupts.h"
 
 int timer_calc_pr(int T_ms, int f_clk_Hz, int prescaler) {
     return (T_ms * 0.001 * f_clk_Hz) / prescaler;

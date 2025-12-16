@@ -4,12 +4,14 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <logicalFolder name="src" displayName="src" projectFiles="true">
-        <itemPath>src/interrupts.h</itemPath>
-        <itemPath>src/lcd.h</itemPath>
-        <itemPath>src/uart.h</itemPath>
-        <itemPath>src/timer.h</itemPath>
-        <itemPath>src/gpio.h</itemPath>
+      <logicalFolder name="include" displayName="include" projectFiles="true">
+        <logicalFolder name="libmc" displayName="libmc" projectFiles="true">
+          <itemPath>include/libmc/interrupts.h</itemPath>
+          <itemPath>include/libmc/lcd.h</itemPath>
+          <itemPath>include/libmc/uart.h</itemPath>
+          <itemPath>include/libmc/timer.h</itemPath>
+          <itemPath>include/libmc/gpio.h</itemPath>
+        </logicalFolder>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
@@ -25,17 +27,20 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="src" displayName="src" projectFiles="true">
-        <itemPath>src/timer.c</itemPath>
-        <itemPath>src/gpio.c</itemPath>
+        <logicalFolder name="libmc" displayName="libmc" projectFiles="true">
+          <itemPath>src/libmc/timer.c</itemPath>
+          <itemPath>src/libmc/gpio.c</itemPath>
+          <itemPath>src/libmc/interrupts.c</itemPath>
+          <itemPath>src/libmc/lcd.c</itemPath>
+          <itemPath>src/libmc/uart.c</itemPath>
+        </logicalFolder>
         <itemPath>src/main.c</itemPath>
-        <itemPath>src/interrupts.c</itemPath>
-        <itemPath>src/lcd.c</itemPath>
-        <itemPath>src/uart.c</itemPath>
       </logicalFolder>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
     <Elem>src</Elem>
+    <Elem>include</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -45,7 +50,7 @@
         <targetDevice>PIC32MX370F512L</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>noID</platformTool>
+        <platformTool>PK3OBPlatformTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>4.60</languageToolchainVersion>
         <platform>4</platform>
@@ -204,7 +209,7 @@
         <property key="use-indirect-calls" value="false"/>
       </C32CPP>
       <C32Global>
-        <property key="common-include-directories" value=""/>
+        <property key="common-include-directories" value="include"/>
         <property key="gp-relative-option" value=""/>
         <property key="legacy-libc" value="true"/>
         <property key="mdtcm" value=""/>

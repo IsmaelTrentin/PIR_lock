@@ -1,5 +1,5 @@
 #include <p32xxxx.h>
-#include "lcd.h"
+#include "libmc/lcd.h"
 
 void lcd_init() {
     ANSELE = 0x0000; //RE0:7 as digital

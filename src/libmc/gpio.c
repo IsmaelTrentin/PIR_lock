@@ -1,5 +1,5 @@
 #include <p32xxxx.h>
-#include "gpio.h"
+#include "libmc/gpio.h"
 
 void set_reg(REG_SELECTOR_T *mode, unsigned int bitId, unsigned int value) {
     *mode = value << bitId;

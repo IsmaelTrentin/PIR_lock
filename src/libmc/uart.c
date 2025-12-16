@@ -1,7 +1,7 @@
 #include <p32xxxx.h>
-#include "uart.h"
-#include "interrupts.h"
-#include "gpio.h"
+#include "libmc/uart.h"
+#include "libmc/interrupts.h"
+#include "libmc/gpio.h"
 
 // UART_TX RF12
 // UART_RX RF13

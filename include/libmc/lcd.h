@@ -1,3 +1,5 @@
+#pragma once
+
 #define LCDDATA 1 // RS = 1 ; access data register
 #define LCDCMD 0 // RS = 0 ; access command register
 #define PMDATA PMDIN // PMP data buffer
