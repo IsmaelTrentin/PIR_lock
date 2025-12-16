@@ -1,3 +1,20 @@
-/dist/
-/build/
+# MPLAB X build output
+build/
+dist/
+.generated_files/
+
+# Object files
+*.o
+*.d
+
+# Output binaries
+*.elf
+*.hex
+*.map
+
+# MPLAB X user files
+nbproject/private/
+
+# OS junk
 .DS_Store
+Thumbs.db
