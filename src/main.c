@@ -15,9 +15,21 @@
 #pragma config FCKSM = CSECMD
 
 #include <p32xxxx.h>
+#include "libmc/lcd.h"
+#include "libmc/timer.h"
 
 int PBCLK_Hz = 40000000;
 
 void main() {
+    timer1_init(1, PBCLK_Hz, 1, 0);
+    lcd_init();
+
+    lcd_clear();
+    lcd_homepos();
+
+    lcd_print(" -- PIR LOCK -- ");
+    lcd_line_2();
+    lcd_print("--- GROUP 04 ---");
+
     while (1);
 }
