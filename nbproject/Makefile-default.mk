@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=src/libmc/timer.c src/libmc/gpio.c src/libmc/interrupts.c src/libmc/lcd.c src/libmc/uart.c src/main.c
+SOURCEFILES_QUOTED_IF_SPACED=src/libmc/timer.c src/libmc/gpio.c src/libmc/interrupts.c src/libmc/lcd.c src/libmc/uart.c src/main.c src/libmc/rgb.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/src/libmc/timer.o ${OBJECTDIR}/src/libmc/gpio.o ${OBJECTDIR}/src/libmc/interrupts.o ${OBJECTDIR}/src/libmc/lcd.o ${OBJECTDIR}/src/libmc/uart.o ${OBJECTDIR}/src/main.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/src/libmc/timer.o.d ${OBJECTDIR}/src/libmc/gpio.o.d ${OBJECTDIR}/src/libmc/interrupts.o.d ${OBJECTDIR}/src/libmc/lcd.o.d ${OBJECTDIR}/src/libmc/uart.o.d ${OBJECTDIR}/src/main.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/src/libmc/timer.o ${OBJECTDIR}/src/libmc/gpio.o ${OBJECTDIR}/src/libmc/interrupts.o ${OBJECTDIR}/src/libmc/lcd.o ${OBJECTDIR}/src/libmc/uart.o ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/libmc/rgb.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/src/libmc/timer.o.d ${OBJECTDIR}/src/libmc/gpio.o.d ${OBJECTDIR}/src/libmc/interrupts.o.d ${OBJECTDIR}/src/libmc/lcd.o.d ${OBJECTDIR}/src/libmc/uart.o.d ${OBJECTDIR}/src/main.o.d ${OBJECTDIR}/src/libmc/rgb.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/src/libmc/timer.o ${OBJECTDIR}/src/libmc/gpio.o ${OBJECTDIR}/src/libmc/interrupts.o ${OBJECTDIR}/src/libmc/lcd.o ${OBJECTDIR}/src/libmc/uart.o ${OBJECTDIR}/src/main.o
+OBJECTFILES=${OBJECTDIR}/src/libmc/timer.o ${OBJECTDIR}/src/libmc/gpio.o ${OBJECTDIR}/src/libmc/interrupts.o ${OBJECTDIR}/src/libmc/lcd.o ${OBJECTDIR}/src/libmc/uart.o ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/libmc/rgb.o
 
 # Source Files
-SOURCEFILES=src/libmc/timer.c src/libmc/gpio.c src/libmc/interrupts.c src/libmc/lcd.c src/libmc/uart.c src/main.c
+SOURCEFILES=src/libmc/timer.c src/libmc/gpio.c src/libmc/interrupts.c src/libmc/lcd.c src/libmc/uart.c src/main.c src/libmc/rgb.c
 
 
 
@@ -137,6 +137,12 @@ ${OBJECTDIR}/src/main.o: src/main.c  .generated_files/flags/default/d38a2e17375a
 	@${RM} ${OBJECTDIR}/src/main.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/main.o.d" -o ${OBJECTDIR}/src/main.o src/main.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
+${OBJECTDIR}/src/libmc/rgb.o: src/libmc/rgb.c  .generated_files/flags/default/d17648c2f79910896edf5b8d613f0a132cc32e8f .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/src/libmc" 
+	@${RM} ${OBJECTDIR}/src/libmc/rgb.o.d 
+	@${RM} ${OBJECTDIR}/src/libmc/rgb.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/libmc/rgb.o.d" -o ${OBJECTDIR}/src/libmc/rgb.o src/libmc/rgb.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
 else
 ${OBJECTDIR}/src/libmc/timer.o: src/libmc/timer.c  .generated_files/flags/default/b1e2d17a3c25ecb4ce05dac4c954e2163a10c2e3 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/src/libmc" 
@@ -173,6 +179,12 @@ ${OBJECTDIR}/src/main.o: src/main.c  .generated_files/flags/default/37b674c85579
 	@${RM} ${OBJECTDIR}/src/main.o.d 
 	@${RM} ${OBJECTDIR}/src/main.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/main.o.d" -o ${OBJECTDIR}/src/main.o src/main.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/src/libmc/rgb.o: src/libmc/rgb.c  .generated_files/flags/default/2551941d616fd1ca4f268a1fff31af6d912724e3 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/src/libmc" 
+	@${RM} ${OBJECTDIR}/src/libmc/rgb.o.d 
+	@${RM} ${OBJECTDIR}/src/libmc/rgb.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/libmc/rgb.o.d" -o ${OBJECTDIR}/src/libmc/rgb.o src/libmc/rgb.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 endif
 
