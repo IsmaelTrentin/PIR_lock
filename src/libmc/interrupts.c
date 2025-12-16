@@ -32,8 +32,18 @@ void int_reset_uart_tx() {
     IFS2bits.U4TXIF = 0;
 }
 
-// TIMER 2
+// TIMER 1
+void int_enable_timer_1(int priority, int subpriority) {
+    IPC1bits.T1IP = priority; // group of 3 bits, 7 -> max priority
+    IPC1bits.T1IS = subpriority;
+    IEC0bits.T1IE = 1;
+}
 
+void int_reset_timer1() {
+    IFS0bits.T1IF = 0; // bit 9
+}
+
+// TIMER 2
 void int_enable_timer_2(int priority, int subpriority) {
     IPC2bits.T2IP = priority; // group of 3 bits, 7 -> max priority
     IPC2bits.T2IS = subpriority;
@@ -42,4 +52,15 @@ void int_enable_timer_2(int priority, int subpriority) {
 
 void int_reset_timer2() {
     IFS0bits.T2IF = 0; // bit 9
+}
+
+// TIMER 3
+void int_enable_timer_3(int priority, int subpriority) {
+    IPC3bits.T3IP = priority; // group of 3 bits, 7 -> max priority
+    IPC3bits.T3IS = subpriority;
+    IEC0bits.T3IE = 1;
+}
+
+void int_reset_timer3() {
+    IFS0bits.T3IF = 0;
 }
