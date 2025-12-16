@@ -20,3 +20,13 @@ void led_turn_on_all();
 // switches
 void sw_init_all();
 int sw_read(int swId);
+
+// buttons
+#define BTN_UP 0
+#define BTN_LEFT 1
+#define BTN_CENTER 2
+#define BTN_RIGHT 3
+#define BTN_DOWN 4
+
+void btn_init_all();
+int btn_read(int btn_id);
