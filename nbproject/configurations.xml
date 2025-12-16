@@ -4,6 +4,13 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <logicalFolder name="src" displayName="src" projectFiles="true">
+        <itemPath>src/interrupts.h</itemPath>
+        <itemPath>src/lcd.h</itemPath>
+        <itemPath>src/uart.h</itemPath>
+        <itemPath>src/timer.h</itemPath>
+        <itemPath>src/gpio.h</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -17,9 +24,19 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>main.c</itemPath>
+      <logicalFolder name="src" displayName="src" projectFiles="true">
+        <itemPath>src/timer.c</itemPath>
+        <itemPath>src/gpio.c</itemPath>
+        <itemPath>src/main.c</itemPath>
+        <itemPath>src/interrupts.c</itemPath>
+        <itemPath>src/lcd.c</itemPath>
+        <itemPath>src/uart.c</itemPath>
+      </logicalFolder>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>src</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="default" type="2">
