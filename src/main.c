@@ -1,3 +1,8 @@
+// with this config we have:
+// SYSCLK = 80MHz
+// PBCLK = 40MHz
+// remember to put these in libmc_config.h
+
 /* Disable JTAG to use RA0 */
 #pragma config JTAGEN = OFF
 #pragma config FWDTEN = OFF
@@ -17,15 +22,22 @@
 #include <p32xxxx.h>
 #include "libmc/lcd.h"
 #include "libmc/timer.h"
+#include "libmc/audio.h"
+#include "libmc/rgb.h"
 
-int PBCLK_Hz = 40000000;
+#include "libmc_config.h"
 
 void main() {
-    timer1_init(1, PBCLK_Hz, 1, 0);
+    timer1_init(1, LIBMC_PBCLK_HZ, 1, 0);
+    audio_init();
     lcd_init();
+    rgb_init();
 
+    rgb_setb(RED);
     lcd_clear();
     lcd_homepos();
+    
+    audio_play_success();
 
     lcd_print(" -- PIR LOCK -- ");
     lcd_line_2();
