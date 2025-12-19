@@ -13,7 +13,6 @@ int freq_to_pr(float freq) {
 // uses timer1 for delay when playing, must be set to 1ms
 
 void audio_init() {
-    timer1_init(1, LIBMC_PBCLK_HZ, 1, 0);
     timer2_init(1, LIBMC_PBCLK_HZ, 1, 0);
     // override PR2 value
     PR2 = freq_to_pr(NOTE_A4);
