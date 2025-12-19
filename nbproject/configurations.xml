@@ -42,6 +42,7 @@
           <itemPath>src/libmc/pwm.c</itemPath>
         </logicalFolder>
         <itemPath>src/main.c</itemPath>
+        <itemPath>src/modules/servo.c</itemPath>
       </logicalFolder>
     </logicalFolder>
   </logicalFolder>
@@ -272,6 +273,7 @@
         <property key="event.recorder.debugger.behavior" value="Running"/>
         <property key="event.recorder.enabled" value="false"/>
         <property key="event.recorder.scvd.files" value=""/>
+        <property key="firmware.download.all" value="false"/>
         <property key="lastid" value=""/>
         <property key="memories.bootflash" value="true"/>
         <property key="memories.configurationmemory" value="true"/>
