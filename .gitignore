@@ -2,6 +2,13 @@
 build/
 dist/
 .generated_files/
+_build
+cmake
+debug
+out
+
+# ide
+.vscode
 
 # Object files
 *.o
