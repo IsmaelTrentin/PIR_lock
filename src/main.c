@@ -19,6 +19,7 @@
 #include "libmc/timer.h"
 
 int PBCLK_Hz = 40000000;
+// test
 
 void main() {
     timer1_init(1, PBCLK_Hz, 1, 0);
