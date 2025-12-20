@@ -21,3 +21,12 @@ void pwm_oc2_init(int octsel, int pr) {
     OC2RS = pr;
     OC2CONbits.ON = 1;
 }
+
+void pwm_oc5_init(int octsel, int pr) {
+    OC5CON = 0;
+    OC5CONbits.OCTSEL = octsel;
+    OC5CONbits.OCM = 0b110;
+    OC5R = pr;
+    OC5RS = pr;
+    OC5CONbits.ON = 1;
+}
