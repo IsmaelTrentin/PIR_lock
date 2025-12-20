@@ -18,3 +18,6 @@ void lcd_wait_busy();
 char lcd_read(int addr);
 void lcd_write(int addr, char c);
 void lcd_print(char * s);
+
+void lcd_line_1();
+void lcd_line_2();
