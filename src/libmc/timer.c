@@ -1,6 +1,8 @@
 #include <p32xxxx.h>
 #include "libmc/interrupts.h"
 
+#include "libmc_config.h"
+
 int timer_calc_pr(int T_ms, int f_clk_Hz, int prescaler) {
     return (f_clk_Hz / prescaler / 1000) * T_ms - 1;
 }
@@ -39,18 +41,17 @@ void timer2_init(int T_ms, int f_clk_Hz, int priority, int subpriority) {
     T2CONbits.ON = 1;
 }
 
-void timer3_init(int T_ms, int f_clk_Hz, int priority, int subpriority) {
+// TODO: auto infer prescaler value using presc_bitconfig
+// with left shifting (2 powers)
+void timer3_init(int T_ms, int prescaler, int presc_bitconfig) {
     T3CONbits.ON = 0; // disable timer 3
     T3CONbits.TCS = 0; // select PB clock bit 1
     T3CONbits.TGATE = 0; // select PB clock bit 2
-    T3CONbits.TCKPS = 3; // 0=1:1 1=1:2 2=1:4 3=1:8
+    T3CONbits.TCKPS = presc_bitconfig;
 
     // set period register
-    PR3 = timer_calc_pr(T_ms, f_clk_Hz, 8);
+    PR3 = timer_calc_pr(T_ms, LIBMC_PBCLK_HZ, prescaler);
     TMR3 = 0;
-    
-    // setup interrupt
-    int_enable_timer_3(priority, subpriority);
 
     // enable timer 3
     T3CONbits.ON = 1;

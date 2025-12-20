@@ -12,7 +12,10 @@
           <itemPath>include/libmc/timer.h</itemPath>
           <itemPath>include/libmc/gpio.h</itemPath>
           <itemPath>include/libmc/rgb.h</itemPath>
+          <itemPath>include/libmc/pwm.h</itemPath>
+          <itemPath>include/libmc/audio.h</itemPath>
         </logicalFolder>
+        <itemPath>include/libmc_config.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
@@ -35,8 +38,11 @@
           <itemPath>src/libmc/lcd.c</itemPath>
           <itemPath>src/libmc/uart.c</itemPath>
           <itemPath>src/libmc/rgb.c</itemPath>
+          <itemPath>src/libmc/audio.c</itemPath>
+          <itemPath>src/libmc/pwm.c</itemPath>
         </logicalFolder>
         <itemPath>src/main.c</itemPath>
+        <itemPath>src/modules/servo.c</itemPath>
       </logicalFolder>
     </logicalFolder>
   </logicalFolder>
@@ -114,9 +120,6 @@
         <property key="use-iar" value="false"/>
         <property key="use-indirect-calls" value="false"/>
       </C32>
-      <C32-AR>
-        <property key="additional-options-chop-files" value="false"/>
-      </C32-AR>
       <C32-AS>
         <property key="assembler-symbols" value=""/>
         <property key="enable-symbols" value="true"/>
@@ -234,6 +237,7 @@
         <property key="event.recorder.debugger.behavior" value="Running"/>
         <property key="event.recorder.enabled" value="false"/>
         <property key="event.recorder.scvd.files" value=""/>
+        <property key="firmware.download.all" value="false"/>
         <property key="lastid" value=""/>
         <property key="memories.bootflash" value="true"/>
         <property key="memories.configurationmemory" value="true"/>
@@ -269,6 +273,7 @@
         <property key="event.recorder.debugger.behavior" value="Running"/>
         <property key="event.recorder.enabled" value="false"/>
         <property key="event.recorder.scvd.files" value=""/>
+        <property key="firmware.download.all" value="false"/>
         <property key="lastid" value=""/>
         <property key="memories.bootflash" value="true"/>
         <property key="memories.configurationmemory" value="true"/>
