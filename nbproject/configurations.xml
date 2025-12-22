@@ -15,6 +15,10 @@
           <itemPath>include/libmc/pwm.h</itemPath>
           <itemPath>include/libmc/audio.h</itemPath>
         </logicalFolder>
+        <logicalFolder name="modules" displayName="modules" projectFiles="true">
+          <itemPath>include/modules/pir.h</itemPath>
+          <itemPath>include/modules/servo.h</itemPath>
+        </logicalFolder>
         <itemPath>include/libmc_config.h</itemPath>
       </logicalFolder>
     </logicalFolder>
@@ -41,8 +45,11 @@
           <itemPath>src/libmc/audio.c</itemPath>
           <itemPath>src/libmc/pwm.c</itemPath>
         </logicalFolder>
+        <logicalFolder name="modules" displayName="modules" projectFiles="true">
+          <itemPath>src/modules/servo.c</itemPath>
+          <itemPath>src/modules/pir.c</itemPath>
+        </logicalFolder>
         <itemPath>src/main.c</itemPath>
-        <itemPath>src/modules/servo.c</itemPath>
       </logicalFolder>
     </logicalFolder>
   </logicalFolder>
