@@ -128,7 +128,7 @@ void flash_write_mem(int addr, short byte) {
     // select the Serial EEPROM
     CS = 0; 
     // send command, ignore data Page Program
-    spi1_write( 0x02); 
+    spi1_write(0x02); 
     // send MSB of memory address
     spi1_write(address >> 16); 
     // send LSB of memory address
