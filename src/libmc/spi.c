@@ -22,9 +22,12 @@ void spi1_init() {
     
     // SPI on, 8-bit master,CKE=1,CKP=0
     SPI1CON = 0x8120; 
-    SPI1CONbits.MSTEN = 1; // SPI Master enable
-    SPI1CONbits.CKE = 1; // Set for SPI Mode 0
-    SPI1CONbits.ON = 1; // Enable SPI1
+    // SPI Master enable
+    SPI1CONbits.MSTEN = 1; 
+    // Set for SPI Mode 0
+    SPI1CONbits.CKE = 1; 
+    // Enable SPI1
+    SPI1CONbits.ON = 1; 
     // F_sck = Fpb / (2 * (15 + 1))
     // 1.25 MHz clock
     SPI1BRG = 15; 
