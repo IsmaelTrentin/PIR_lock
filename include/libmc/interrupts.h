@@ -14,23 +14,10 @@
    INTCONbits.MVEC = 1;\
    __builtin_enable_interrupts();}
 
-#define INT_VN_TIMER1 4
-#define INT_VN_TIMER2 8
-#define INT_VN_TIMER3 12
-#define INT_VN_TIMER4 16
-#define INT_VN_UART4 39   
-   
 void multivector_mode();
 
 void int_enable_uart(int priority, int subpriority);
-void int_reset_uart_rx();
-void int_reset_uart_tx();
-int int_getf_uart_rx();
-int int_getf_uart_tx();
 
 void int_enable_timer_1(int priority, int subpriority);
-void int_reset_timer1();
 void int_enable_timer_2(int priority, int subpriority);
-void int_reset_timer2();
 void int_enable_timer_3(int priority, int subpriority);
-void int_reset_timer3();
