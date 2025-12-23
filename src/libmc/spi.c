@@ -5,7 +5,7 @@
 void spi1_init() {
     // RF2 as Digital Input SDI for flash, SDO for MCU 
     TRISFbits.TRISF2 = 1; 
-    //RF7 ad Digital Output SDO for flash, SDI for MCU
+    // RF7 as Digital Output SDO for flash, SDI for MCU
     TRISFbits.TRISF7 = 0; 
     // RF6 as Digital Output SCK
     TRISFbits.TRISF6 = 0; 
