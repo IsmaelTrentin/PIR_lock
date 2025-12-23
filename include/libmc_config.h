@@ -5,9 +5,12 @@
 #define LIBMC_SYSCLK_HZ 80000000UL
 #define LIBMC_PBCLK_HZ  40000000UL
 
-// AUDIO
+// LIB
+// - AUDIO
 #define LIBMC_AUDIO_SUCCESS_DELAY 62UL
 #define LIBMC_AUDIO_ERROR_DELAY 100UL
+// - UART
+#define LIBMC_UART_BUFF_SIZE 80
 
 // MODULES
 // - PIR sensor
@@ -24,6 +27,10 @@
 
 #ifndef LIBMC_PBCLK_HZ
 #error "libmc_config.h LIBMC_PBCLK_HZ not defined"
+#endif
+
+#ifndef LIBMC_UART_BUFF_SIZE
+#error "libmc_config.h LIBMC_UART_BUFF_SIZE not defined"
 #endif
 
 #ifndef LIBMC_PIR_TRIS
