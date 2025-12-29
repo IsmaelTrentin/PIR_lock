@@ -1,6 +1,7 @@
 #include <p32xxxx.h>
+#include <string.h>
+
 #include "libmc/uart.h"
-#include "libmc/gpio.h"
 #include "libmc/interrupts.h"
 
 #include "libmc_config.h"
@@ -65,10 +66,7 @@ void uart_putc(int c) {
 }
 
 char uart_getc() {
-    // TODO:remove debgug
-    led_turn_on(0);
     while (rx_got_byte == 0);
-    led_turn_off(0);
     rx_got_byte = 0;
 
     return last_char;
@@ -99,6 +97,7 @@ int uart_gets(char data_out[LIBMC_UART_BUFF_SIZE]) {
     data_out[i] = '\0';
 
     if (c == -1) {
+        memset(data_out, 0, LIBMC_UART_BUFF_SIZE);
         return 1;
     }
 
