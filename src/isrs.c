@@ -31,6 +31,11 @@ ihandler_t1() {
         state.authorized = 0;
 
         events.went_afk = 1;
+        // NOTE: do not remove. it is bad to have it in the ISR
+        // but without it the uart comms do not terminate
+        // immediately since its a blocking functions.
+        // thanks to the ISR we can disable the read flags
+        // and terminate the function prematurely.
         uart_terminate_read();
     }
 }
@@ -70,11 +75,12 @@ ihandler_cn_rf0() {
         // if pin is 1 then the button is pressed down,
         // otherwise the button is at rest.
         if (pressed) {
-            events.went_afk = 1;
             if (state.sleeping == 1) {
                 state.sleeping = 0;
-                tmr_afk = 0;
                 // also starts timer for 5s -> if no input go back to sleep
+                tmr_afk = 0;
+
+                events.auth_request = 1;
             }
         }
     }

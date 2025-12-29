@@ -6,14 +6,17 @@
 #define SERVO_OPENED_LOCK_DEG SERVO_MAX_DEG
 
 typedef struct State {
-    int sensor_enabled;
     int authorized;
-    int sleeping;
     int locked;
+    int sleeping;
+    int sensor_enabled;
     char *password;
 } State;
 
 typedef struct Events {
-    int locked;
+    int auth_request;
+    int auth_success;
     int went_afk;
+    int sensor_detect;
+    int locked;
 } Events;
