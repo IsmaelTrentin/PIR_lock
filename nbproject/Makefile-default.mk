@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=src/libmc/timer.c src/libmc/gpio.c src/libmc/interrupts.c src/libmc/lcd.c src/libmc/uart.c src/libmc/rgb.c src/libmc/audio.c src/libmc/pwm.c src/modules/servo.c src/modules/pir.c src/main.c src/libmc/spi.c
+SOURCEFILES_QUOTED_IF_SPACED=src/libmc/timer.c src/libmc/gpio.c src/libmc/interrupts.c src/libmc/lcd.c src/libmc/uart.c src/libmc/rgb.c src/libmc/audio.c src/libmc/pwm.c src/libmc/spi.c src/modules/servo.c src/modules/pir.c src/main.c src/isrs.c src/utils.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/src/libmc/timer.o ${OBJECTDIR}/src/libmc/gpio.o ${OBJECTDIR}/src/libmc/interrupts.o ${OBJECTDIR}/src/libmc/lcd.o ${OBJECTDIR}/src/libmc/uart.o ${OBJECTDIR}/src/libmc/rgb.o ${OBJECTDIR}/src/libmc/audio.o ${OBJECTDIR}/src/libmc/pwm.o ${OBJECTDIR}/src/modules/servo.o ${OBJECTDIR}/src/modules/pir.o ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/libmc/spi.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/src/libmc/timer.o.d ${OBJECTDIR}/src/libmc/gpio.o.d ${OBJECTDIR}/src/libmc/interrupts.o.d ${OBJECTDIR}/src/libmc/lcd.o.d ${OBJECTDIR}/src/libmc/uart.o.d ${OBJECTDIR}/src/libmc/rgb.o.d ${OBJECTDIR}/src/libmc/audio.o.d ${OBJECTDIR}/src/libmc/pwm.o.d ${OBJECTDIR}/src/modules/servo.o.d ${OBJECTDIR}/src/modules/pir.o.d ${OBJECTDIR}/src/main.o.d ${OBJECTDIR}/src/libmc/spi.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/src/libmc/timer.o ${OBJECTDIR}/src/libmc/gpio.o ${OBJECTDIR}/src/libmc/interrupts.o ${OBJECTDIR}/src/libmc/lcd.o ${OBJECTDIR}/src/libmc/uart.o ${OBJECTDIR}/src/libmc/rgb.o ${OBJECTDIR}/src/libmc/audio.o ${OBJECTDIR}/src/libmc/pwm.o ${OBJECTDIR}/src/libmc/spi.o ${OBJECTDIR}/src/modules/servo.o ${OBJECTDIR}/src/modules/pir.o ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/isrs.o ${OBJECTDIR}/src/utils.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/src/libmc/timer.o.d ${OBJECTDIR}/src/libmc/gpio.o.d ${OBJECTDIR}/src/libmc/interrupts.o.d ${OBJECTDIR}/src/libmc/lcd.o.d ${OBJECTDIR}/src/libmc/uart.o.d ${OBJECTDIR}/src/libmc/rgb.o.d ${OBJECTDIR}/src/libmc/audio.o.d ${OBJECTDIR}/src/libmc/pwm.o.d ${OBJECTDIR}/src/libmc/spi.o.d ${OBJECTDIR}/src/modules/servo.o.d ${OBJECTDIR}/src/modules/pir.o.d ${OBJECTDIR}/src/main.o.d ${OBJECTDIR}/src/isrs.o.d ${OBJECTDIR}/src/utils.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/src/libmc/timer.o ${OBJECTDIR}/src/libmc/gpio.o ${OBJECTDIR}/src/libmc/interrupts.o ${OBJECTDIR}/src/libmc/lcd.o ${OBJECTDIR}/src/libmc/uart.o ${OBJECTDIR}/src/libmc/rgb.o ${OBJECTDIR}/src/libmc/audio.o ${OBJECTDIR}/src/libmc/pwm.o ${OBJECTDIR}/src/modules/servo.o ${OBJECTDIR}/src/modules/pir.o ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/libmc/spi.o
+OBJECTFILES=${OBJECTDIR}/src/libmc/timer.o ${OBJECTDIR}/src/libmc/gpio.o ${OBJECTDIR}/src/libmc/interrupts.o ${OBJECTDIR}/src/libmc/lcd.o ${OBJECTDIR}/src/libmc/uart.o ${OBJECTDIR}/src/libmc/rgb.o ${OBJECTDIR}/src/libmc/audio.o ${OBJECTDIR}/src/libmc/pwm.o ${OBJECTDIR}/src/libmc/spi.o ${OBJECTDIR}/src/modules/servo.o ${OBJECTDIR}/src/modules/pir.o ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/isrs.o ${OBJECTDIR}/src/utils.o
 
 # Source Files
-SOURCEFILES=src/libmc/timer.c src/libmc/gpio.c src/libmc/interrupts.c src/libmc/lcd.c src/libmc/uart.c src/libmc/rgb.c src/libmc/audio.c src/libmc/pwm.c src/modules/servo.c src/modules/pir.c src/main.c src/libmc/spi.c
+SOURCEFILES=src/libmc/timer.c src/libmc/gpio.c src/libmc/interrupts.c src/libmc/lcd.c src/libmc/uart.c src/libmc/rgb.c src/libmc/audio.c src/libmc/pwm.c src/libmc/spi.c src/modules/servo.c src/modules/pir.c src/main.c src/isrs.c src/utils.c
 
 
 
@@ -149,6 +149,12 @@ ${OBJECTDIR}/src/libmc/pwm.o: src/libmc/pwm.c  .generated_files/flags/default/3b
 	@${RM} ${OBJECTDIR}/src/libmc/pwm.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/libmc/pwm.o.d" -o ${OBJECTDIR}/src/libmc/pwm.o src/libmc/pwm.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
+${OBJECTDIR}/src/libmc/spi.o: src/libmc/spi.c  .generated_files/flags/default/a123172736ce66cac24de80c701a86f893945792 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/src/libmc" 
+	@${RM} ${OBJECTDIR}/src/libmc/spi.o.d 
+	@${RM} ${OBJECTDIR}/src/libmc/spi.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/libmc/spi.o.d" -o ${OBJECTDIR}/src/libmc/spi.o src/libmc/spi.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
 ${OBJECTDIR}/src/modules/servo.o: src/modules/servo.c  .generated_files/flags/default/3c13894a8c92c5f0bfb0486c16ab9faf17b6892b .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/src/modules" 
 	@${RM} ${OBJECTDIR}/src/modules/servo.o.d 
@@ -167,11 +173,17 @@ ${OBJECTDIR}/src/main.o: src/main.c  .generated_files/flags/default/d38a2e17375a
 	@${RM} ${OBJECTDIR}/src/main.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/main.o.d" -o ${OBJECTDIR}/src/main.o src/main.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/src/libmc/spi.o: src/libmc/spi.c  .generated_files/flags/default/a123172736ce66cac24de80c701a86f893945792 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
-	@${MKDIR} "${OBJECTDIR}/src/libmc" 
-	@${RM} ${OBJECTDIR}/src/libmc/spi.o.d 
-	@${RM} ${OBJECTDIR}/src/libmc/spi.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/libmc/spi.o.d" -o ${OBJECTDIR}/src/libmc/spi.o src/libmc/spi.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+${OBJECTDIR}/src/isrs.o: src/isrs.c  .generated_files/flags/default/ee74c271aa3e68bb3e0f2390c7d8fc2c39d8c20c .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/isrs.o.d 
+	@${RM} ${OBJECTDIR}/src/isrs.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/isrs.o.d" -o ${OBJECTDIR}/src/isrs.o src/isrs.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/src/utils.o: src/utils.c  .generated_files/flags/default/b2027fa48a14996ed649d23e9e9f0bfede95d29c .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/utils.o.d 
+	@${RM} ${OBJECTDIR}/src/utils.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/utils.o.d" -o ${OBJECTDIR}/src/utils.o src/utils.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 else
 ${OBJECTDIR}/src/libmc/timer.o: src/libmc/timer.c  .generated_files/flags/default/b1e2d17a3c25ecb4ce05dac4c954e2163a10c2e3 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
@@ -222,6 +234,12 @@ ${OBJECTDIR}/src/libmc/pwm.o: src/libmc/pwm.c  .generated_files/flags/default/ef
 	@${RM} ${OBJECTDIR}/src/libmc/pwm.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/libmc/pwm.o.d" -o ${OBJECTDIR}/src/libmc/pwm.o src/libmc/pwm.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
+${OBJECTDIR}/src/libmc/spi.o: src/libmc/spi.c  .generated_files/flags/default/fcc66697e372778aa958ec2aa4efbe1587aae4ea .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/src/libmc" 
+	@${RM} ${OBJECTDIR}/src/libmc/spi.o.d 
+	@${RM} ${OBJECTDIR}/src/libmc/spi.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/libmc/spi.o.d" -o ${OBJECTDIR}/src/libmc/spi.o src/libmc/spi.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
 ${OBJECTDIR}/src/modules/servo.o: src/modules/servo.c  .generated_files/flags/default/8307272dd9b55505dacec3d41bf25c6e450f58f5 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/src/modules" 
 	@${RM} ${OBJECTDIR}/src/modules/servo.o.d 
@@ -240,11 +258,17 @@ ${OBJECTDIR}/src/main.o: src/main.c  .generated_files/flags/default/37b674c85579
 	@${RM} ${OBJECTDIR}/src/main.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/main.o.d" -o ${OBJECTDIR}/src/main.o src/main.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/src/libmc/spi.o: src/libmc/spi.c  .generated_files/flags/default/fcc66697e372778aa958ec2aa4efbe1587aae4ea .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
-	@${MKDIR} "${OBJECTDIR}/src/libmc" 
-	@${RM} ${OBJECTDIR}/src/libmc/spi.o.d 
-	@${RM} ${OBJECTDIR}/src/libmc/spi.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/libmc/spi.o.d" -o ${OBJECTDIR}/src/libmc/spi.o src/libmc/spi.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+${OBJECTDIR}/src/isrs.o: src/isrs.c  .generated_files/flags/default/ba01e8d075c669a6f662482a64e8635171611c1a .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/isrs.o.d 
+	@${RM} ${OBJECTDIR}/src/isrs.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/isrs.o.d" -o ${OBJECTDIR}/src/isrs.o src/isrs.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/src/utils.o: src/utils.c  .generated_files/flags/default/280baa466460410350730e45e46dd59ed7cecc59 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/utils.o.d 
+	@${RM} ${OBJECTDIR}/src/utils.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/utils.o.d" -o ${OBJECTDIR}/src/utils.o src/utils.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 endif
 

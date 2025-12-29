@@ -168,3 +168,40 @@ int btn_read(int btn_id) {
 
     return -1;
 }
+
+// config CN for BTNC on RF0
+void btn_cn_config_rf0() {
+    // disable CN on rf0
+    CNCONFbits.ON = 0;
+    // enable interrupt for CN on rf0
+    CNENFbits.CNIEF0 = 1;
+    // set pull-down mode
+    CNPDFbits.CNPDF0 = 1;
+    // clear int. flag for CN on PORTF
+    IFS1bits.CNFIF = 0;
+    // enable interrupt for CN on PORTF
+    IEC1bits.CNFIE = 1;
+    // set priority and sub-priority
+    IPC8bits.CNIP = 1;
+    IPC8bits.CNIS = 3;
+    // enable CN on rf0
+    CNCONFbits.ON = 1;
+
+    // read pins to prevent errors as stated
+    // in the datasheet code example.
+    PORTF;
+}
+
+// config CN for BTNL on RB0
+void btn_cn_config_rb0() {
+    CNCONBbits.ON = 0;
+    CNENBbits.CNIEB0 = 1;
+    CNPDBbits.CNPDB0 = 1;
+    IFS1bits.CNBIF = 0;
+    IEC1bits.CNBIE = 1;
+    IPC8bits.CNIP = 1;
+    IPC8bits.CNIS = 3;
+    CNCONBbits.ON = 1;
+
+    PORTB;
+}

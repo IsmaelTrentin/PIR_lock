@@ -8,4 +8,5 @@ void uart_init(int baud, int priority, int subpriority);
 void uart_putc(int c);
 char uart_getc();
 void uart_puts(char data[]);
-void uart_gets(char dataOut[80]);
+int uart_gets(char dataOut[80]);
+void uart_terminate_read();

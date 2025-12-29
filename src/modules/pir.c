@@ -8,5 +8,6 @@ void pir_init() {
 }
 
 int pir_read() {
-    int val = LIBMC_PIR_PORT;
+    int val = PORTBbits.RB9;
+    return val;
 }

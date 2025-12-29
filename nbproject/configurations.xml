@@ -21,6 +21,8 @@
           <itemPath>include/modules/servo.h</itemPath>
         </logicalFolder>
         <itemPath>include/libmc_config.h</itemPath>
+        <itemPath>include/main.h</itemPath>
+        <itemPath>include/utils.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
@@ -52,6 +54,8 @@
           <itemPath>src/modules/pir.c</itemPath>
         </logicalFolder>
         <itemPath>src/main.c</itemPath>
+        <itemPath>src/isrs.c</itemPath>
+        <itemPath>src/utils.c</itemPath>
       </logicalFolder>
     </logicalFolder>
   </logicalFolder>

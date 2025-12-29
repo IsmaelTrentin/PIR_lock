@@ -14,9 +14,10 @@
 
 // MODULES
 // - PIR sensor
-#define LIBMC_PIR_TRIS TRISFbits.TRISF0
-#define LIBMC_PIR_ANSEL ANSELF
-#define LIBMC_PIR_PORT PORTFbits.RF0
+// connected to ANALOG DEBUG HEADER through T2 (RB9)
+#define LIBMC_PIR_TRIS TRISBbits.TRISB9
+#define LIBMC_PIR_ANSEL ANSELBbits.ANSB9
+#define LIBMC_PIR_PORT PORTBbits.RB9
 
 #endif
 
