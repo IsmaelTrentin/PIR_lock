@@ -11,6 +11,7 @@
 #define LIBMC_AUDIO_ERROR_DELAY 100UL
 // - UART
 #define LIBMC_UART_BUFF_SIZE 80
+#define LIBMC_UART_BAUD 9600
 
 // MODULES
 // - PIR sensor
@@ -32,6 +33,10 @@
 
 #ifndef LIBMC_UART_BUFF_SIZE
 #error "libmc_config.h LIBMC_UART_BUFF_SIZE not defined"
+#endif
+
+#ifndef LIBMC_UART_BAUD
+#error "libmc_config.h LIBMC_UART_BAUD not defined"
 #endif
 
 #ifndef LIBMC_PIR_TRIS
