@@ -160,7 +160,6 @@ void main() {
     __builtin_disable_interrupts();
 
     timer1_init(1, LIBMC_PBCLK_HZ, 1, 0);
-    // TODO: add uart config params to a possible config.h
     uart_init(LIBMC_UART_BAUD, 0b110, 0b011);
     audio_init();
     lcd_init();
