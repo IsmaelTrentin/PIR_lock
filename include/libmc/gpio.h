@@ -30,3 +30,6 @@ int sw_read(int swId);
 
 void btn_init_all();
 int btn_read(int btn_id);
+
+void btn_cn_config_rf0();
+void btn_cn_config_rb0();

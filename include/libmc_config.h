@@ -11,12 +11,18 @@
 #define LIBMC_AUDIO_ERROR_DELAY 100UL
 // - UART
 #define LIBMC_UART_BUFF_SIZE 80
+#define LIBMC_UART_BAUD 9600
 
 // MODULES
 // - PIR sensor
-#define LIBMC_PIR_TRIS TRISFbits.TRISF0
-#define LIBMC_PIR_ANSEL ANSELF
-#define LIBMC_PIR_PORT PORTFbits.RF0
+// connected to ANALOG DEBUG HEADER through T2 (RB9)
+#define LIBMC_PIR_TRIS TRISBbits.TRISB9
+#define LIBMC_PIR_ANSEL ANSELBbits.ANSB9
+#define LIBMC_PIR_PORT PORTBbits.RB9
+
+// PROGRAM
+#define LIBMC_LOGS_MAXN 10
+#define LIBMC_AFK_MAX_TIME_MS 5000
 
 #endif
 
@@ -33,6 +39,10 @@
 #error "libmc_config.h LIBMC_UART_BUFF_SIZE not defined"
 #endif
 
+#ifndef LIBMC_UART_BAUD
+#error "libmc_config.h LIBMC_UART_BAUD not defined"
+#endif
+
 #ifndef LIBMC_PIR_TRIS
 #error "libmc_config.h LIBMC_PIR_TRIS missing TRIS pin config"
 #endif
@@ -42,3 +52,8 @@
 #ifndef LIBMC_PIR_PORT
 #error "libmc_config.h LIBMC_PIR_PORT missing PORT pin config"
 #endif
+
+#ifndef LIBMC_LOGS_MAXN
+#error "libmc_config.h LIBMC_LOGS_MAXN not defined"
+#endif
+
