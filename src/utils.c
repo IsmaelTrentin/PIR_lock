@@ -20,7 +20,9 @@ void lcd_print_homescreen() {
 
 void uart_put_global_menu(int state_activated) {
     uart_puts(state_activated ? "1. Deactivate\n" : "1. Activate\n" );
-    uart_puts("2. Change password\n");
+    if (state_activated == 0) {
+        uart_puts("2. Change password\n");
+    }
     uart_puts("3. Print logs\n");
     uart_puts("4. Clear logs\n");
     uart_puts("5. Log out\n");
