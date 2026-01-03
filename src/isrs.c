@@ -1,7 +1,9 @@
 #include <p32xxxx.h>
 
-#include "isrs.h"
 #include "libmc/uart.h"
+#include "modules/pir.h"
+
+#include "isrs.h"
 #include "main.h"
 
 volatile unsigned long TIMER1_MS = 0;
@@ -67,7 +69,7 @@ ihandler_cn() {
     }
     if (CNSTATBbits.CNSTATB9) {
         // RB9 changed
-        int movement_detected = (PORTBbits.RB9 == 1);
+        int movement_detected = pir_read();
 
         if (state.sensor_enabled && state.locked && movement_detected) {
             state.locked = 0;
