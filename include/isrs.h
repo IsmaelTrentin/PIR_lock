@@ -8,4 +8,4 @@
 void ihandler_t1();
 void ihandler_t2();
 
-void ihandler_cn_rf0();
+void ihandler_cn();

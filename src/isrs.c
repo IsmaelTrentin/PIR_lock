@@ -48,7 +48,7 @@ ihandler_t2() {
 // pressed down -> on
 // released up -> off
 void __attribute__((interrupt(IPL1AUTO), vector(_CHANGE_NOTICE_VECTOR)))
-ihandler_cn_rf0() {
+ihandler_cn() {
     IFS1bits.CNFIF = 0;
     IFS1bits.CNBIF = 0;
 
