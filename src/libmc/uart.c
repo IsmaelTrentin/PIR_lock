@@ -1,5 +1,4 @@
 #include <p32xxxx.h>
-#include <string.h>
 
 #include "libmc/uart.h"
 #include "libmc/interrupts.h"
@@ -11,6 +10,7 @@
 
 unsigned int uart_brg = 0;
 volatile int rx_got_byte = 0;
+volatile int was_terminated = 0;
 volatile char last_char = '\n';
 
 void uart_config_pins() {
@@ -66,8 +66,13 @@ void uart_putc(int c) {
 }
 
 char uart_getc() {
-    while (rx_got_byte == 0);
+    while (rx_got_byte == 0 && was_terminated == 0);
     rx_got_byte = 0;
+
+    if (was_terminated) {
+        last_char = '\n';
+        return -1;
+    }
 
     return last_char;
 }
@@ -82,13 +87,18 @@ void uart_puts(char data[]) {
 
 // returns 1 if read was terminated
 int uart_gets(char data_out[LIBMC_UART_BUFF_SIZE]) {
+    // reset uart state to wait for new `last_char`
+    // through ISR so that we do not use the latest value
+    // and also reset the terminated flag.
+    rx_got_byte = 0;
+    was_terminated = 0;
+
     int i = 0;
     char c;
-
     while ((c = uart_getc()) != -1) {
-        if (c == '\r' || c == '\n')
+        if (c == '\r' || c == '\n') {
             break;
-
+        }
         if (i < LIBMC_UART_BUFF_SIZE - 1) {
             data_out[i++] = c;
         }
@@ -96,8 +106,8 @@ int uart_gets(char data_out[LIBMC_UART_BUFF_SIZE]) {
 
     data_out[i] = '\0';
 
-    if (c == -1) {
-        memset(data_out, 0, LIBMC_UART_BUFF_SIZE);
+    if (was_terminated) {
+        was_terminated = 0;
         return 1;
     }
 
@@ -105,6 +115,5 @@ int uart_gets(char data_out[LIBMC_UART_BUFF_SIZE]) {
 }
 
 void uart_terminate_read() {
-    rx_got_byte = 1;
-    last_char = -1;
+    was_terminated = 1;
 }
