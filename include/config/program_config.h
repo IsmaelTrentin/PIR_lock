@@ -4,6 +4,7 @@
 // PROGRAM
 #define PROGRAM_CONFIG_LOGS_MAXN 10
 #define PROGRAM_CONFIG_AFK_MAX_TIME_MS 5000
+#define PROGRAM_CONFIG_DEFAULT_PASSWORD "0000"
 
 #endif
 
@@ -18,4 +19,8 @@
 
 #ifndef PROGRAM_CONFIG_AFK_MAX_TIME_MS
 #error "program_config.h PROGRAM_CONFIG_AFK_MAX_TIME_MS not defined"
+#endif
+
+#ifndef PROGRAM_CONFIG_DEFAULT_PASSWORD
+#error "program_config.h PROGRAM_CONFIG_DEFAULT_PASSWORD not defined"
 #endif

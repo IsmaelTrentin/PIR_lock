@@ -21,6 +21,7 @@
 
 #include <p32xxxx.h>
 #include <string.h>
+#include <stdio.h>
 
 #include "libmc/lcd.h"
 #include "libmc/timer.h"
@@ -51,11 +52,12 @@ volatile State state = {
     .locked = 1,
     .sleeping = 1,
     .sensor_enabled  = 0,
-    .password = "0000",
+    .password = PROGRAM_CONFIG_DEFAULT_PASSWORD,
 };
 volatile Events events = {
     .auth_request = 0,
     .auth_success = 0,
+    .password_change = 0,
     .went_afk = 0,
     .locked = 0,
     .sensor_detect = 0,
@@ -88,7 +90,7 @@ void handle_events() {
                 led_lat(0, 1);
                 terminated = uart_gets(uart_data);
                 led_lat(0, 0);
-                if (!terminated) {
+                if (terminated == 0) {
                     if (strcmp(uart_data, state.password) == 0) {
                         state.authorized = 1;
                         state.sleeping = 0;
@@ -111,6 +113,67 @@ void handle_events() {
         events.auth_success = 0;
         lcd_print_homescreen();
         audio_play_success();
+    }
+    if (events.password_change) {
+        events.password_change = 0;
+
+        // we keep the afk timer on so that we prevent
+        // bruteforcing the password using this menu option.
+        TIMER_AFK = 0;
+        if (state.sensor_enabled == 0 && state.authorized == 1 && state.sleeping == 0) {
+            uart_puts("-- PIR LOCK Auth --\n");
+
+            int terminated = 0;
+            int ok = 0;
+            while (ok == 0 && terminated == 0) {
+                uart_puts("master password: ");
+
+                // debug led to check when uart is blocking cpu cycles
+                led_lat(0, 1);
+                terminated = uart_gets(uart_data);
+                led_lat(0, 0);
+                if (terminated == 0) {
+                    if (strcmp(uart_data, state.password) == 0) {
+                        // reset afk timer
+                        TIMER_AFK = 0;
+                        ok = 1;
+
+                    } else {
+                        ok = 0;
+
+                        uart_puts("bad password\n");
+                    }
+                }
+            }
+            if (ok && terminated == 0) {
+                // disable afk timer
+                TIMER_AFK = -1;
+
+                uart_puts("new password: ");
+                led_lat(0, 1);
+                uart_gets(uart_data);
+                led_lat(0, 0);
+
+                char new_pwd[LIBMC_UART_BUFF_SIZE] = {};
+                snprintf(new_pwd, sizeof(new_pwd), "%s", uart_data);
+
+                int confirmed = 0;
+                while (confirmed == 0) {
+                    uart_puts("confirm password: ");
+                    led_lat(0, 1);
+                    uart_gets(uart_data);
+                    led_lat(0, 0);
+
+                    if (strcmp(uart_data, new_pwd) == 0) {
+                        confirmed = 1;
+                        snprintf(state.password, sizeof(state.password), "%s", new_pwd);
+                    } else {
+                        confirmed = 0;
+                        uart_puts("passwords do not match. retry\n");
+                    }
+                }
+            }
+        }
     }
     if (events.went_afk) {
         events.went_afk = 0;
@@ -144,7 +207,7 @@ void handle_menu_options(int opt) {
             }
             break;
         case 2:
-            // TODO: handle change password
+            events.password_change = 1;
             break;
         case 3:
             uart_put_logs();

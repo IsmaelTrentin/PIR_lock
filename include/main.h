@@ -15,12 +15,13 @@ typedef struct State {
     int locked;
     int sleeping;
     int sensor_enabled;
-    char *password;
+    char password[LIBMC_UART_BUFF_SIZE];
 } State;
 
 typedef struct Events {
     int auth_request;
     int auth_success;
+    int password_change;
     int went_afk;
     int sensor_detect;
     int locked;
