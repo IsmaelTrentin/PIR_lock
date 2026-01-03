@@ -1,10 +1,11 @@
 #include <p32xxxx.h>
 
-#include "libmc_config.h"
+#include "config/libmc_config.h"
+#include "config/modules_config.h"
 
 void pir_init() {
-    LIBMC_PIR_TRIS = 1;
-    LIBMC_PIR_ANSEL = 0;
+    MODULES_CONFIG_PIR_TRIS = 1;
+    MODULES_CONFIG_PIR_ANSEL = 0;
 }
 
 void pir_cn_config_rb9() {

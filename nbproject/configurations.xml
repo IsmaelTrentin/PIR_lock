@@ -5,6 +5,9 @@
                    displayName="Header Files"
                    projectFiles="true">
       <logicalFolder name="include" displayName="include" projectFiles="true">
+        <logicalFolder name="f1" displayName="config" projectFiles="true">
+          <itemPath>include/config/libmc_config.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="libmc" displayName="libmc" projectFiles="true">
           <itemPath>include/libmc/interrupts.h</itemPath>
           <itemPath>include/libmc/lcd.h</itemPath>
@@ -20,7 +23,6 @@
           <itemPath>include/modules/pir.h</itemPath>
           <itemPath>include/modules/servo.h</itemPath>
         </logicalFolder>
-        <itemPath>include/libmc_config.h</itemPath>
         <itemPath>include/main.h</itemPath>
         <itemPath>include/utils.h</itemPath>
         <itemPath>include/logging.h</itemPath>

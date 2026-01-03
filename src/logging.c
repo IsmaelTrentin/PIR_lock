@@ -1,5 +1,5 @@
-#include "libmc_config.h"
-#include <string.h>
+#include "config/libmc_config.h"
+#include "config/program_config.h"
 
 #include "main.h"
 #include "isrs.h"
@@ -19,11 +19,11 @@ char* log_enum_str(LogEventType type) {
 }
 
 unsigned int log_get_storage_idx() {
-    return LOG_ID_SEQ % LIBMC_LOGS_MAXN;
+    return LOG_ID_SEQ % PROGRAM_CONFIG_LOGS_MAXN;
 }
 
 void log_init_arr() {
-    for (int i = 0; i < LIBMC_LOGS_MAXN; i ++) {
+    for (int i = 0; i < PROGRAM_CONFIG_LOGS_MAXN; i ++) {
         Log init_log = {
             .id = -1,
             .timestamp = 0,
