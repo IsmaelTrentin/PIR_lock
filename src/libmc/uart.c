@@ -3,7 +3,8 @@
 #include "libmc/uart.h"
 #include "libmc/interrupts.h"
 
-#include "libmc_config.h"
+#include "config/libmc_config.h"
+#include "config/project_config.h"
 
 // UART_TX RF12
 // UART_RX RF13
@@ -30,7 +31,7 @@ void uart_init(int baud, int priority, int subpriority) {
 
     // baud rate generator config
     //    UartBrg = (PbusClock + (8 * baud)) / (16 * baud) - 1;
-    uart_brg = (int) (((float) LIBMC_PBCLK_HZ / (16 * baud) - 1) + 0.5);
+    uart_brg = (int) (((float) PROJECT_CONFIG_PBCLK_HZ / (16 * baud) - 1) + 0.5);
     U4BRG = uart_brg;
     U4STAbits.UTXEN = 1;
     U4STAbits.URXEN = 1;

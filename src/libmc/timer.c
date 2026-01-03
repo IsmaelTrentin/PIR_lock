@@ -1,7 +1,9 @@
 #include <p32xxxx.h>
+
 #include "libmc/interrupts.h"
 
-#include "libmc_config.h"
+#include "config/libmc_config.h"
+#include "config/project_config.h"
 
 int timer_calc_pr(int T_ms, int f_clk_Hz, int prescaler) {
     return (f_clk_Hz / prescaler / 1000) * T_ms - 1;
@@ -50,7 +52,7 @@ void timer3_init(int T_ms, int prescaler, int presc_bitconfig) {
     T3CONbits.TCKPS = presc_bitconfig;
 
     // set period register
-    PR3 = timer_calc_pr(T_ms, LIBMC_PBCLK_HZ, prescaler);
+    PR3 = timer_calc_pr(T_ms, PROJECT_CONFIG_PBCLK_HZ, prescaler);
     TMR3 = 0;
 
     // enable timer 3

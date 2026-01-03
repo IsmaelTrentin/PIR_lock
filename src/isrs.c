@@ -3,6 +3,8 @@
 #include "libmc/uart.h"
 #include "modules/pir.h"
 
+#include "config/program_config.h"
+
 #include "isrs.h"
 #include "main.h"
 
@@ -24,7 +26,7 @@ ihandler_t1() {
         TIMER_AFK++;
     }
 
-    if (TIMER_AFK >= LIBMC_AFK_MAX_TIME_MS) {
+    if (TIMER_AFK >= PROGRAM_CONFIG_AFK_MAX_TIME_MS) {
         // disable child timer
         TIMER_AFK = -1;
         state.sleeping = 1;

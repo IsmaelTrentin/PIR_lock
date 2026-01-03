@@ -3,7 +3,7 @@
 #include "libmc/timer.h"
 #include "modules/servo.h"
 
-#include "libmc_config.h"
+#include "config/libmc_config.h"
 
 int us_to_ticks(int us) {
     // 1 tick = PBCLK/64 = 625KHz -> 1/625KHz = 1.6us

@@ -2,7 +2,8 @@
 
 #include "modules/servo.h"
 
-#include "libmc_config.h"
+#include "config/libmc_config.h"
+#include "config/program_config.h"
 
 #include "logging.h"
 
@@ -27,4 +28,4 @@ typedef struct Events {
 
 extern volatile State state;
 extern volatile Events events;
-extern Log logs[LIBMC_LOGS_MAXN];
+extern Log logs[PROGRAM_CONFIG_LOGS_MAXN];

@@ -31,7 +31,9 @@
 #include "modules/pir.h"
 #include "modules/servo.h"
 
-#include "libmc_config.h"
+#include "config/libmc_config.h"
+#include "config/project_config.h"
+#include "config/program_config.h"
 
 #include "main.h"
 #include "logging.h"
@@ -58,7 +60,7 @@ volatile Events events = {
     .locked = 0,
     .sensor_detect = 0,
 };
-Log logs[LIBMC_LOGS_MAXN] = {};
+Log logs[PROGRAM_CONFIG_LOGS_MAXN] = {};
 
 void debug_leds() {
     led_lat(7, state.authorized);
@@ -166,7 +168,7 @@ void main() {
     /* INIT */
     __builtin_disable_interrupts();
 
-    timer1_init(1, LIBMC_PBCLK_HZ, 1, 0);
+    timer1_init(1, PROJECT_CONFIG_PBCLK_HZ, 1, 0);
     uart_init(LIBMC_UART_BAUD, 0b110, 0b011);
     audio_init();
     lcd_init();

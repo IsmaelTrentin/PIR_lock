@@ -3,17 +3,18 @@
 #include "libmc/timer.h"
 #include "libmc/audio.h"
 
-#include "libmc_config.h"
+#include "config/libmc_config.h"
+#include "config/project_config.h"
 
 int freq_to_pr(float freq) {
-    return (LIBMC_PBCLK_HZ / (8 * freq)) - 1;
+    return (PROJECT_CONFIG_PBCLK_HZ / (8 * freq)) - 1;
 }
 
 // initializes timer2 and pwm on oc1
 // uses timer1 for delay when playing, must be set to 1ms
 
 void audio_init() {
-    timer2_init(1, LIBMC_PBCLK_HZ, 1, 0);
+    timer2_init(1, PROJECT_CONFIG_PBCLK_HZ, 1, 0);
     // override PR2 value
     PR2 = freq_to_pr(NOTE_A4);
 

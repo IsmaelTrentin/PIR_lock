@@ -3,6 +3,8 @@
 #include "libmc/lcd.h"
 #include "libmc/uart.h"
 
+#include "config/program_config.h"
+
 #include "logging.h"
 #include "main.h"
 
@@ -28,7 +30,7 @@ void uart_put_logs() {
     uart_puts("-- LOGS --\n");
 
     int printed_n = 0;
-    for (int i = 0; i < LIBMC_LOGS_MAXN; i ++) {
+    for (int i = 0; i < PROGRAM_CONFIG_LOGS_MAXN; i ++) {
         if (logs[i].id == -1) continue;
 
         Log log = logs[i];
