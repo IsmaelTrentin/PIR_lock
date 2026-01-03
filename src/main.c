@@ -139,10 +139,7 @@ void handle_menu_options(int opt) {
                 state.locked = 1;
 
                 events.locked = 1;
-                // servo_set_deg(SERVO_CLOSED_LOCK_DEG);
-                // log_append(LOG_EVENT_TYPE_CLOSE);
             }
-
             break;
         case 2:
             // TODO: handle change password
@@ -184,6 +181,7 @@ void main() {
     // - gnd   -> SERVO_1_GND
     // - data  -> T2 pin (Analog Debug Header) that is RB9 (see libmc_config.h)
     pir_init();
+    pir_cn_config_rb9();
     // NOTE:
     // connections:
     // - power -> SERVO_0_VBAR (needs 5V)
@@ -206,27 +204,7 @@ void main() {
 
         handle_events();
 
-        if (state.sensor_enabled) {
-            rgb_setb(BLUE);
-
-            // we only read if the lock is closed.
-            if (state.locked) {
-                // TODO: create CN interrupt so that we can read
-                // at every moment. at this moment we need to wait
-                // for the went_afk event since it terminates UART
-                // comms to be able to read the sensor.
-                int read = pir_read();
-                // read state.locked again to ensure that
-                // we only open if the lock is closed.
-                if (read && state.locked) {
-                    state.locked = 0;
-
-                    events.sensor_detect = 1;
-                }
-            }
-        } else {
-            rgb_setb(RED);
-        }
+        rgb_setb(state.sensor_enabled ? BLUE : RED);
 
         if (state.authorized && state.sleeping == 0) {
             if (TIMER_AFK == -1) {
@@ -237,6 +215,11 @@ void main() {
 
             // debug led to check when uart is blocking cpu cycles
             led_lat(0, 1);
+            // NOTE:
+            // our uart_gets impl. is blocking, therefore every time
+            // that we request input we cannot perform another operation
+            // concurrently, for example reading the sensor and opening the lock,
+            // because we are stuck waiting for input.
             int terminated = uart_gets(uart_data);
             led_lat(0, 0);
             if (!terminated) {

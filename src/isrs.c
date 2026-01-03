@@ -65,6 +65,16 @@ ihandler_cn() {
             events.locked = 1;
         }
     }
+    if (CNSTATBbits.CNSTATB9) {
+        // RB9 changed
+        int movement_detected = (PORTBbits.RB9 == 1);
+
+        if (state.sensor_enabled && state.locked && movement_detected) {
+            state.locked = 0;
+
+            events.sensor_detect = 1;
+        }
+    }
     if (CNSTATFbits.CNSTATF0) {
         // RF0 changed
         // read pin to check if CN is from released to pressed
