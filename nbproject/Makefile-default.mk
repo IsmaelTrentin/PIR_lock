@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=src/libmc/timer.c src/libmc/gpio.c src/libmc/interrupts.c src/libmc/lcd.c src/libmc/uart.c src/libmc/rgb.c src/libmc/audio.c src/libmc/pwm.c src/libmc/spi.c src/modules/servo.c src/modules/pir.c src/main.c src/isrs.c src/utils.c
+SOURCEFILES_QUOTED_IF_SPACED=src/libmc/timer.c src/libmc/gpio.c src/libmc/interrupts.c src/libmc/lcd.c src/libmc/uart.c src/libmc/rgb.c src/libmc/audio.c src/libmc/pwm.c src/libmc/spi.c src/modules/servo.c src/modules/pir.c src/main.c src/isrs.c src/utils.c src/logging.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/src/libmc/timer.o ${OBJECTDIR}/src/libmc/gpio.o ${OBJECTDIR}/src/libmc/interrupts.o ${OBJECTDIR}/src/libmc/lcd.o ${OBJECTDIR}/src/libmc/uart.o ${OBJECTDIR}/src/libmc/rgb.o ${OBJECTDIR}/src/libmc/audio.o ${OBJECTDIR}/src/libmc/pwm.o ${OBJECTDIR}/src/libmc/spi.o ${OBJECTDIR}/src/modules/servo.o ${OBJECTDIR}/src/modules/pir.o ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/isrs.o ${OBJECTDIR}/src/utils.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/src/libmc/timer.o.d ${OBJECTDIR}/src/libmc/gpio.o.d ${OBJECTDIR}/src/libmc/interrupts.o.d ${OBJECTDIR}/src/libmc/lcd.o.d ${OBJECTDIR}/src/libmc/uart.o.d ${OBJECTDIR}/src/libmc/rgb.o.d ${OBJECTDIR}/src/libmc/audio.o.d ${OBJECTDIR}/src/libmc/pwm.o.d ${OBJECTDIR}/src/libmc/spi.o.d ${OBJECTDIR}/src/modules/servo.o.d ${OBJECTDIR}/src/modules/pir.o.d ${OBJECTDIR}/src/main.o.d ${OBJECTDIR}/src/isrs.o.d ${OBJECTDIR}/src/utils.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/src/libmc/timer.o ${OBJECTDIR}/src/libmc/gpio.o ${OBJECTDIR}/src/libmc/interrupts.o ${OBJECTDIR}/src/libmc/lcd.o ${OBJECTDIR}/src/libmc/uart.o ${OBJECTDIR}/src/libmc/rgb.o ${OBJECTDIR}/src/libmc/audio.o ${OBJECTDIR}/src/libmc/pwm.o ${OBJECTDIR}/src/libmc/spi.o ${OBJECTDIR}/src/modules/servo.o ${OBJECTDIR}/src/modules/pir.o ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/isrs.o ${OBJECTDIR}/src/utils.o ${OBJECTDIR}/src/logging.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/src/libmc/timer.o.d ${OBJECTDIR}/src/libmc/gpio.o.d ${OBJECTDIR}/src/libmc/interrupts.o.d ${OBJECTDIR}/src/libmc/lcd.o.d ${OBJECTDIR}/src/libmc/uart.o.d ${OBJECTDIR}/src/libmc/rgb.o.d ${OBJECTDIR}/src/libmc/audio.o.d ${OBJECTDIR}/src/libmc/pwm.o.d ${OBJECTDIR}/src/libmc/spi.o.d ${OBJECTDIR}/src/modules/servo.o.d ${OBJECTDIR}/src/modules/pir.o.d ${OBJECTDIR}/src/main.o.d ${OBJECTDIR}/src/isrs.o.d ${OBJECTDIR}/src/utils.o.d ${OBJECTDIR}/src/logging.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/src/libmc/timer.o ${OBJECTDIR}/src/libmc/gpio.o ${OBJECTDIR}/src/libmc/interrupts.o ${OBJECTDIR}/src/libmc/lcd.o ${OBJECTDIR}/src/libmc/uart.o ${OBJECTDIR}/src/libmc/rgb.o ${OBJECTDIR}/src/libmc/audio.o ${OBJECTDIR}/src/libmc/pwm.o ${OBJECTDIR}/src/libmc/spi.o ${OBJECTDIR}/src/modules/servo.o ${OBJECTDIR}/src/modules/pir.o ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/isrs.o ${OBJECTDIR}/src/utils.o
+OBJECTFILES=${OBJECTDIR}/src/libmc/timer.o ${OBJECTDIR}/src/libmc/gpio.o ${OBJECTDIR}/src/libmc/interrupts.o ${OBJECTDIR}/src/libmc/lcd.o ${OBJECTDIR}/src/libmc/uart.o ${OBJECTDIR}/src/libmc/rgb.o ${OBJECTDIR}/src/libmc/audio.o ${OBJECTDIR}/src/libmc/pwm.o ${OBJECTDIR}/src/libmc/spi.o ${OBJECTDIR}/src/modules/servo.o ${OBJECTDIR}/src/modules/pir.o ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/isrs.o ${OBJECTDIR}/src/utils.o ${OBJECTDIR}/src/logging.o
 
 # Source Files
-SOURCEFILES=src/libmc/timer.c src/libmc/gpio.c src/libmc/interrupts.c src/libmc/lcd.c src/libmc/uart.c src/libmc/rgb.c src/libmc/audio.c src/libmc/pwm.c src/libmc/spi.c src/modules/servo.c src/modules/pir.c src/main.c src/isrs.c src/utils.c
+SOURCEFILES=src/libmc/timer.c src/libmc/gpio.c src/libmc/interrupts.c src/libmc/lcd.c src/libmc/uart.c src/libmc/rgb.c src/libmc/audio.c src/libmc/pwm.c src/libmc/spi.c src/modules/servo.c src/modules/pir.c src/main.c src/isrs.c src/utils.c src/logging.c
 
 
 
@@ -185,6 +185,12 @@ ${OBJECTDIR}/src/utils.o: src/utils.c  .generated_files/flags/default/b2027fa48a
 	@${RM} ${OBJECTDIR}/src/utils.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/utils.o.d" -o ${OBJECTDIR}/src/utils.o src/utils.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
+${OBJECTDIR}/src/logging.o: src/logging.c  .generated_files/flags/default/805bca17f4db28458d56b41be47a2554738c38a8 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/logging.o.d 
+	@${RM} ${OBJECTDIR}/src/logging.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/logging.o.d" -o ${OBJECTDIR}/src/logging.o src/logging.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
 else
 ${OBJECTDIR}/src/libmc/timer.o: src/libmc/timer.c  .generated_files/flags/default/b1e2d17a3c25ecb4ce05dac4c954e2163a10c2e3 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/src/libmc" 
@@ -269,6 +275,12 @@ ${OBJECTDIR}/src/utils.o: src/utils.c  .generated_files/flags/default/280baa4664
 	@${RM} ${OBJECTDIR}/src/utils.o.d 
 	@${RM} ${OBJECTDIR}/src/utils.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/utils.o.d" -o ${OBJECTDIR}/src/utils.o src/utils.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/src/logging.o: src/logging.c  .generated_files/flags/default/f756f6099e45ebbf39af4976c6ef840029856471 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/logging.o.d 
+	@${RM} ${OBJECTDIR}/src/logging.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -fno-common -MP -MMD -MF "${OBJECTDIR}/src/logging.o.d" -o ${OBJECTDIR}/src/logging.o src/logging.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 endif
 

@@ -32,7 +32,9 @@
 #include "modules/servo.h"
 
 #include "libmc_config.h"
+
 #include "main.h"
+#include "logging.h"
 #include "utils.h"
 // NOTE: 
 // DO NOT REMOVE!!!
@@ -41,8 +43,7 @@
 // since it stays stuck in the timer1 ISR (1ms).
 #include "isrs.h"
 
-extern volatile int tmr_afk;
-char data[LIBMC_UART_BUFF_SIZE] = {};
+char uart_data[LIBMC_UART_BUFF_SIZE] = {};
 volatile State state = {
     .authorized = 0,
     .locked = 1,
@@ -57,6 +58,7 @@ volatile Events events = {
     .locked = 0,
     .sensor_detect = 0,
 };
+Log logs[LIBMC_LOGS_MAXN] = {};
 
 void debug_leds() {
     led_lat(7, state.authorized);
@@ -66,9 +68,6 @@ void debug_leds() {
 }
 
 void handle_events() {
-    // TODO: theres is a bug when after opening the lock, if
-    // we request an auth, uart_gets never finishes.
-    // the cause is probably uart_terminate_read!
     if (events.auth_request) {
         events.auth_request = 0;
         // if we haven't given a password yet and a wake up
@@ -85,14 +84,14 @@ void handle_events() {
 
                 // debug led to check when uart is blocking cpu cycles
                 led_lat(0, 1);
-                terminated = uart_gets(data);
+                terminated = uart_gets(uart_data);
                 led_lat(0, 0);
                 if (!terminated) {
-                    if (strcmp(data, state.password) == 0) {
+                    if (strcmp(uart_data, state.password) == 0) {
                         state.authorized = 1;
                         state.sleeping = 0;
                         // reset afk timer
-                        tmr_afk = 0;
+                        TIMER_AFK = 0;
                         ok = 1;
 
                         events.auth_success = 1;
@@ -114,18 +113,19 @@ void handle_events() {
     if (events.went_afk) {
         events.went_afk = 0;
         uart_terminate_read();
-        uart_puts("\ntimed out\n");
+        uart_puts("\nlogged out\n");
         lcd_print_homescreen();
     }
     if (events.locked) {
         events.locked = 0;
         servo_set_deg(SERVO_CLOSED_LOCK_DEG);
+        log_append(LOG_EVENT_TYPE_CLOSE);
     }
     if (events.sensor_detect) {
         events.sensor_detect = 0;
         audio_play_note(440, 100);
         servo_set_deg(SERVO_OPENED_LOCK_DEG);
-        // TODO: register log
+        log_append(LOG_EVENT_TYPE_OPEN);
     }
 }
 
@@ -137,7 +137,10 @@ void handle_menu_options(int opt) {
             } else {
                 state.sensor_enabled = 0;
                 state.locked = 1;
-                servo_set_deg(SERVO_CLOSED_LOCK_DEG);
+
+                events.locked = 1;
+                // servo_set_deg(SERVO_CLOSED_LOCK_DEG);
+                // log_append(LOG_EVENT_TYPE_CLOSE);
             }
 
             break;
@@ -145,10 +148,17 @@ void handle_menu_options(int opt) {
             // TODO: handle change password
             break;
         case 3:
-            // TODO: handle show logs
+            uart_put_logs();
             break;
         case 4:
-            // TODO: handle clear logs
+            log_erase_all();
+            break;
+        case 5:
+            TIMER_AFK = -1;
+            state.authorized = 0;
+            state.sleeping = 1;
+
+            events.went_afk = 1;
             break;
         default:
             uart_puts("invalid option\n");
@@ -188,6 +198,7 @@ void main() {
     led_turn_off_all();
     lcd_print_homescreen();
     servo_set_deg(SERVO_CLOSED_LOCK_DEG);
+    log_init_arr();
 
     /* PROGRAM LIFECYCLE */
     while (1) {
@@ -218,20 +229,20 @@ void main() {
         }
 
         if (state.authorized && state.sleeping == 0) {
-            if (tmr_afk == -1) {
-                tmr_afk = 0;
+            if (TIMER_AFK == -1) {
+                TIMER_AFK = 0;
             }
 
             uart_put_global_menu(state.sensor_enabled);
 
             // debug led to check when uart is blocking cpu cycles
             led_lat(0, 1);
-            int terminated = uart_gets(data);
+            int terminated = uart_gets(uart_data);
             led_lat(0, 0);
             if (!terminated) {
-                // resets 5s time out delay on action
-                tmr_afk = 0;
-                int opt = atoi(data);
+                // resets afk time out delay on action
+                TIMER_AFK = 0;
+                int opt = atoi(uart_data);
                 handle_menu_options(opt);
             }
         }

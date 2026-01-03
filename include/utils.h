@@ -2,3 +2,4 @@
 
 void lcd_print_homescreen();
 void uart_put_global_menu(int state_activated);
+void uart_put_logs();

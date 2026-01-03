@@ -23,6 +23,7 @@
         <itemPath>include/libmc_config.h</itemPath>
         <itemPath>include/main.h</itemPath>
         <itemPath>include/utils.h</itemPath>
+        <itemPath>include/logging.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
@@ -56,6 +57,7 @@
         <itemPath>src/main.c</itemPath>
         <itemPath>src/isrs.c</itemPath>
         <itemPath>src/utils.c</itemPath>
+        <itemPath>src/logging.c</itemPath>
       </logicalFolder>
     </logicalFolder>
   </logicalFolder>

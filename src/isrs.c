@@ -4,29 +4,27 @@
 #include "libmc/uart.h"
 #include "main.h"
 
-extern volatile State state;
-extern volatile Events events;
+volatile unsigned long TIMER1_MS = 0;
 
-static unsigned int tm1_ms = 0;
 static unsigned int cnrf0_last_press_time = 0;
 
 // -1 is disabled
 // 0 enables it and at the next cycle it'll start counting ms.
-volatile int tmr_afk = -1;
+volatile int TIMER_AFK = -1;
 
 void __attribute__((interrupt(IPL1AUTO), vector(_TIMER_1_VECTOR)))
 ihandler_t1() {
     IFS0bits.T1IF = 0;
 
-    tm1_ms++;
+    TIMER1_MS++;
 
-    if (tmr_afk != -1) {
-        tmr_afk++;
+    if (TIMER_AFK != -1) {
+        TIMER_AFK++;
     }
 
-    if (tmr_afk >= 5000) {
+    if (TIMER_AFK >= LIBMC_AFK_MAX_TIME_MS) {
         // disable child timer
-        tmr_afk = -1;
+        TIMER_AFK = -1;
         state.sleeping = 1;
         state.authorized = 0;
 
@@ -78,7 +76,7 @@ ihandler_cn() {
             if (state.sleeping == 1) {
                 state.sleeping = 0;
                 // also starts timer for 5s -> if no input go back to sleep
-                tmr_afk = 0;
+                TIMER_AFK = 0;
 
                 events.auth_request = 1;
             }

@@ -20,6 +20,10 @@
 #define LIBMC_PIR_ANSEL ANSELBbits.ANSB9
 #define LIBMC_PIR_PORT PORTBbits.RB9
 
+// PROGRAM
+#define LIBMC_LOGS_MAXN 10
+#define LIBMC_AFK_MAX_TIME_MS 5000
+
 #endif
 
 // print compile time error when 
@@ -48,3 +52,8 @@
 #ifndef LIBMC_PIR_PORT
 #error "libmc_config.h LIBMC_PIR_PORT missing PORT pin config"
 #endif
+
+#ifndef LIBMC_LOGS_MAXN
+#error "libmc_config.h LIBMC_LOGS_MAXN not defined"
+#endif
+
